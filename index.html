@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Used Vehicles</title>
+  </head>
+  <body>
+    <nav class="navBar">
+      <h2>Used Vehicles</h2>
+
+      <form id="filterForm"></form>
+      <div>
+        <label for="minPrice">Minimum Price:</label>
+        <input type="number" id="minPrice" value="0" />
+
+        <label for="maxPrice">Maximum Price:</label>
+        <input type="number" id="maxPrice" value="1000000" />
+      </div>
+      <div>
+        <label for="yearFilter">Model Year: </label>
+        <select id="yearFilter">
+          <option value="allYears">All</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+        </select>
+      </div>
+      <label for="manufacturerFilter">Manufacturer: </label>
+      <select id="manufacturerFilter">
+        <option value="allManufacturers">All</option>
+        <option value="BMW">BMW</option>
+        <option value="Cadillac">Cadillac</option>
+        <option value="Chevrolet">Chevrolet</option>
+        <option value="Dodge">Dodge</option>
+        <option value="Ford">Ford</option>
+        <option value="Honda">Honda</option>
+        <option value="Hyundai">Hyundai</option>
+        <option value="Kia">Kia</option>
+        <option value="Lexus">Lexus</option>
+        <option value="Mazda">Mazda</option>
+        <option value="Nissan">Nissan</option>
+        <option value="Pontiac">Pontiac</option>
+        <option value="Porsche">Porsche</option>
+        <option value="Subaru">Subaru</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Volkswagen">Volkswagen</option>
+      </select>
+      <label for="colorFilter">Color: </label>
+      <select id="colorFilter">
+        <option value="allColors">All</option>
+        <option value="Black">Black</option>
+        <option value="White">White</option>
+        <option value="Gray">Gray</option>
+        <option value="Silver">Silver</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+      </select>
+      <div>
+        <!-- reset and apply filter buttons -->
+        <button type="button" id="filterBtn">Apply</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </div>
+    </nav>
+
+    <!-- container for each card -->
+    <div class="layout">
+      <!-- each card div has data hard-coded in it, referenced by sort.js -->
+      <div
+        class="card"
+        carYear="2018"
+        carMileage="30000"
+        carManufacturer="Toyota"
+        carPrice="18000"
+        carColor="White"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2018camry.avif"
+            alt="2018 Camry - Silver"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Toyota Camry</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2018</p>
+            <p>Mileage: 30000</p>
+            <p>Color: White</p>
+            <p>MPG: 25 city, 35 hwy</p>
+            <p>Price: $18,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2016"
+        carMileage="45000"
+        carManufacturer="Honda"
+        carPrice="14000"
+        carColor="White"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2016civic.avif"
+            alt="2016 Civic - White"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Honda Civic</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2016</p>
+            <p>Mileage: 45000</p>
+            <p>Color: White</p>
+            <p>MPG: 30 city, 40 hwy</p>
+            <p>Price: $14,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2017"
+        carMileage="35000"
+        carManufacturer="Ford"
+        carPrice="16000"
+        carColor="Black"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2017-Ford-Fusion-front_11206_032_2400x1800_J7_nologo.avif"
+            alt="2017 Fusion"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Ford Fusion</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2017</p>
+            <p>Mileage: 35000</p>
+            <p>Color: Black</p>
+            <p>MPG: 28 city, 38 hwy</p>
+            <p>Price: $16,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2019"
+        carMileage="25000"
+        carManufacturer="Nissan"
+        carPrice="17000"
+        carColor="Blue"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2019altima.png"
+            alt="2019 Altima - Blue"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Nissan Altima</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2019</p>
+            <p>Mileage: 25000</p>
+            <p>Color: Blue</p>
+            <p>MPG: 27 city, 36 hwy</p>
+            <p>Price: $17,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2015"
+        carMileage="50000"
+        carManufacturer="Chevrolet"
+        carPrice="12000"
+        carColor="Red"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2015malibu.avif"
+            alt="2015 Malibu - Red"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Chevrolet Malibu</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2018</p>
+            <p>Mileage: 50000</p>
+            <p>Color: Red</p>
+            <p>MPG: 25 city, 37 hwy</p>
+            <p>Price: $12,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2016"
+        carMileage="40000"
+        carManufacturer="Volkswagen"
+        carPrice="12000"
+        carColor="Gray"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2016passat.png"
+            alt="2016 Passat - Gray"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Volkswagen Passat</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2016</p>
+            <p>Mileage: 40000</p>
+            <p>Color: Gray</p>
+            <p>MPG: 29 city, 40 hwy</p>
+            <p>Price: $12,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2020"
+        carMileage="22000"
+        carManufacturer="Hyundai"
+        carPrice="16000"
+        carColor="Silver"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2020elantra.avif"
+            alt="2020 Elantra -  Silver"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Hyundai Elantra</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2020</p>
+            <p>Mileage: 22000</p>
+            <p>Color: Silver</p>
+            <p>MPG: 30 city, 31 hwy</p>
+            <p>Price: $16,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2014"
+        carMileage="60000"
+        carManufacturer="Subaru"
+        carPrice="14000"
+        carColor="Green"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2014outback.avif"
+            alt="2014 Outback - Green"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Subaru Outback</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2014</p>
+            <p>Mileage: 60000</p>
+            <p>Color: Green</p>
+            <p>MPG: 22 city, 30 hwy</p>
+            <p>Price: $14,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2017"
+        carMileage="32000"
+        carManufacturer="Mazda"
+        carPrice="19000"
+        carColor="Blue"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2017cx5.avif"
+            alt="2017 CX-5 - Blue"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Mazda CX-5</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2017</p>
+            <p>Mileage: 32000</p>
+            <p>Color: Blue</p>
+            <p>MPG: 24 city, 31 hwy</p>
+            <p>Price: $19,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2018"
+        carMileage="28000"
+        carManufacturer="Kia"
+        carPrice="17000"
+        carColor="White"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2018sorento.png"
+            alt="2018 Sorento - White"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Kia Sorento</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2018</p>
+            <p>Mileage: 28000</p>
+            <p>Color: White</p>
+            <p>MPG: 22 city, 29 hwy</p>
+            <p>Price: $17,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2015"
+        carMileage="30000"
+        carManufacturer="Dodge"
+        carPrice="24000"
+        carColor="Black"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2015challenger.avif"
+            alt="2015 Challenger - Black"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Dodge Challenger</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2015</p>
+            <p>Mileage: 30000</p>
+            <p>Color: Black</p>
+            <p>MPG: 19 city, 30 hwy</p>
+            <p>Price: $24,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2017"
+        carMileage="28000"
+        carManufacturer="Cadillac"
+        carPrice="32000"
+        carColor="Red"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2017xt5.webp"
+            alt="2017 XT5 - Red"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Cadillac XT5</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2017</p>
+            <p>Mileage: 28000</p>
+            <p>Color: Red</p>
+            <p>MPG: 19 city, 27 hwy</p>
+            <p>Price: $32,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2008"
+        carMileage="197500"
+        carManufacturer="Pontiac"
+        carPrice="4000"
+        carColor="Silver"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2008vibe.webp"
+            alt="2008 Vbe - Grey"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Pontiac Vibe</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2008</p>
+            <p>Mileage: 197500</p>
+            <p>Color: Silver</p>
+            <p>MPG: 25 city, 31 hwy</p>
+            <p>Price: $4,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2020"
+        carMileage="22000"
+        carManufacturer="Porsche"
+        carPrice="68000"
+        carColor="White"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2020cayenne.avif"
+            alt="2020 Porsche Cayenne - White"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Porsche Cayenne</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2020</p>
+            <p>Mileage: 22000</p>
+            <p>Color: White</p>
+            <p>MPG: 20 city, 26 hwy</p>
+            <p>Price: $68,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2017"
+        carMileage="29000"
+        carManufacturer="Lexus"
+        carPrice="26000"
+        carColor="White"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2017es.avif"
+            alt="2017 ES - White"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">Lexus ES</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2017</p>
+            <p>Mileage: 29000</p>
+            <p>Color: White</p>
+            <p>MPG: 21 city, 30 hwy</p>
+            <p>Price: $26,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card"
+        carYear="2016"
+        carMileage="32000"
+        carManufacturer="BMW"
+        carPrice="27000"
+        carColor="Black"
+      >
+        <div class="card__image">
+          <img
+            src="./img/2016fiveseries.avif"
+            alt="2016 5 Series - Black"
+            style="width: 300px; height: 150px"
+          />
+        </div>
+        <div class="card__content">
+          <span class="title">BMW 5 Series</span>
+          <div id="moreContent" style="gap: 2px">
+            <p>Year: 2016</p>
+            <p>Mileage: 32000</p>
+            <p>Color: Black</p>
+            <p>MPG: 23 city, 34 hwy</p>
+            <p>Price: $27,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/sort.js"></script>
+    <script src="./js/reset.js"></script>
+  </body>
+</html>
